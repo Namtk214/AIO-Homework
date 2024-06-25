@@ -1,20 +1,20 @@
 #EXERCISE 1
-# import torch
-# import torch.nn as nn
-# data = torch.Tensor([1, 2, 3])
-# data
-# soft_max = nn.Softmax(dim=0)
-# print(soft_max(data))
-# class StableSoftmax(nn.Module):
-#   def __init__(self):
-#     super().__init__()
-#   def forward(self, x):
-#     c = torch.max(x, dim=0, keepdim=True) #???
-#     x_exp = torch.exp(x - c.values)     #>???
-#     total = x_exp.sum(0, keepdim=True)
-#     return x_exp / total
-# bien = StableSoftmax()
-# print(bien(data))
+import torch
+import torch.nn as nn
+data = torch.Tensor([1, 2, 3])
+data
+soft_max = nn.Softmax(dim=0)
+print(soft_max(data))
+class StableSoftmax(nn.Module):
+  def __init__(self):
+    super().__init__()
+  def forward(self, x):
+    c = torch.max(x, dim=0, keepdim=True) #???
+    x_exp = torch.exp(x - c.values)     #>???
+    total = x_exp.sum(0, keepdim=True)
+    return x_exp / total
+bien = StableSoftmax()
+print(bien(data))
 
 #EXERCISE 2:
 from abc import ABC, abstractmethod
